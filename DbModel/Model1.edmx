@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="StoObektaTestModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="StoObektaTestModelStoreContainer">
+          <EntitySet Name="Events" EntityType="StoObektaTestModel.Store.Events" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="StoObektaTestModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TouristSites" EntityType="StoObektaTestModel.Store.TouristSites" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="StoObektaTestModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VisitedSites" EntityType="StoObektaTestModel.Store.VisitedSites" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Events_TouristSites" Association="StoObektaTestModel.Store.FK_Events_TouristSites">
+            <End Role="TouristSites" EntitySet="TouristSites" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitedSites_TouristSites" Association="StoObektaTestModel.Store.FK_VisitedSites_TouristSites">
+            <End Role="TouristSites" EntitySet="TouristSites" />
+            <End Role="VisitedSites" EntitySet="VisitedSites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VisitedSites_Users" Association="StoObektaTestModel.Store.FK_VisitedSites_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="VisitedSites" EntitySet="VisitedSites" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="EventsID" />
+          </Key>
+          <Property Name="EventsID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="ntext" Nullable="false" />
+          <Property Name="DateOfEvent" Type="datetime" Nullable="false" />
+          <Property Name="SiteID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TouristSites">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TouristSiteName" Type="nchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Username" Type="nchar" MaxLength="20" />
+          <Property Name="AndroidID" Type="nchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="VisitedSites">
+          <Key>
+            <PropertyRef Name="UsersID" />
+            <PropertyRef Name="SitesID" />
+          </Key>
+          <Property Name="UsersID" Type="int" Nullable="false" />
+          <Property Name="SitesID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Events_TouristSites">
+          <End Role="TouristSites" Type="StoObektaTestModel.Store.TouristSites" Multiplicity="1" />
+          <End Role="Events" Type="StoObektaTestModel.Store.Events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouristSites">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitedSites_TouristSites">
+          <End Role="TouristSites" Type="StoObektaTestModel.Store.TouristSites" Multiplicity="1" />
+          <End Role="VisitedSites" Type="StoObektaTestModel.Store.VisitedSites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouristSites">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VisitedSites">
+              <PropertyRef Name="SitesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VisitedSites_Users">
+          <End Role="Users" Type="StoObektaTestModel.Store.Users" Multiplicity="1" />
+          <End Role="VisitedSites" Type="StoObektaTestModel.Store.VisitedSites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VisitedSites">
+              <PropertyRef Name="UsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StoObektaTestModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="StoObektaTestEntities2" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Events" EntityType="StoObektaTestModel.Event" />
+          <EntitySet Name="sysdiagrams" EntityType="StoObektaTestModel.sysdiagram" />
+          <EntitySet Name="TouristSites" EntityType="StoObektaTestModel.TouristSite" />
+          <EntitySet Name="Users" EntityType="StoObektaTestModel.User" />
+          <AssociationSet Name="FK_Events_TouristSites" Association="StoObektaTestModel.FK_Events_TouristSites">
+            <End Role="TouristSites" EntitySet="TouristSites" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="VisitedSites" Association="StoObektaTestModel.VisitedSites">
+            <End Role="TouristSites" EntitySet="TouristSites" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventsID" />
+          </Key>
+          <Property Name="EventsID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DateOfEvent" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SiteID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TouristSite" Relationship="StoObektaTestModel.FK_Events_TouristSites" FromRole="Events" ToRole="TouristSites" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TouristSite">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TouristSiteName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="Events" Relationship="StoObektaTestModel.FK_Events_TouristSites" FromRole="TouristSites" ToRole="Events" />
+          <NavigationProperty Name="Users" Relationship="StoObektaTestModel.VisitedSites" FromRole="TouristSites" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+          <Property Name="AndroidID" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="TouristSites" Relationship="StoObektaTestModel.VisitedSites" FromRole="Users" ToRole="TouristSites" />
+        </EntityType>
+        <Association Name="FK_Events_TouristSites">
+          <End Role="TouristSites" Type="StoObektaTestModel.TouristSite" Multiplicity="1" />
+          <End Role="Events" Type="StoObektaTestModel.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouristSites">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VisitedSites">
+          <End Role="TouristSites" Type="StoObektaTestModel.TouristSite" Multiplicity="*" />
+          <End Role="Users" Type="StoObektaTestModel.User" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StoObektaTestModelStoreContainer" CdmEntityContainer="StoObektaTestEntities2">
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="StoObektaTestModel.Event">
+              <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="EventsID" ColumnName="EventsID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateOfEvent" ColumnName="DateOfEvent" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="StoObektaTestModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TouristSites">
+            <EntityTypeMapping TypeName="StoObektaTestModel.TouristSite">
+              <MappingFragment StoreEntitySet="TouristSites">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TouristSiteName" ColumnName="TouristSiteName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="StoObektaTestModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="AndroidID" ColumnName="AndroidID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="VisitedSites" TypeName="StoObektaTestModel.VisitedSites" StoreEntitySet="VisitedSites">
+            <EndProperty Name="TouristSites">
+              <ScalarProperty Name="ID" ColumnName="SitesID" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="ID" ColumnName="UsersID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
