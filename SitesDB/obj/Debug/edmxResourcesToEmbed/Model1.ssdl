@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db5e168c72a59c40f0a71ea27600d99136Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="db5e168c72a59c40f0a71ea27600d99136ModelStoreContainer">
+    <EntitySet Name="NationalSites" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.Store.NationalSites" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SiteComments" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.Store.SiteComments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SiteEvents" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.Store.SiteEvents" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tourists" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.Store.Tourists" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_SiteComments_NationalSites" Association="db5e168c72a59c40f0a71ea27600d99136Model.Store.FK_SiteComments_NationalSites">
+      <End Role="NationalSites" EntitySet="NationalSites" />
+      <End Role="SiteComments" EntitySet="SiteComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SiteEvents_NationalSites" Association="db5e168c72a59c40f0a71ea27600d99136Model.Store.FK_SiteEvents_NationalSites">
+      <End Role="NationalSites" EntitySet="NationalSites" />
+      <End Role="SiteEvents" EntitySet="SiteEvents" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="NationalSites">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="City" Type="nchar" Nullable="false" MaxLength="30" />
+    <Property Name="Number" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SiteComments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Comment" Type="ntext" Nullable="false" />
+    <Property Name="DateAdded" Type="smalldatetime" />
+    <Property Name="SiteID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SiteEvents">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EventDescription" Type="ntext" Nullable="false" />
+    <Property Name="DateOfEvent" Type="smalldatetime" />
+    <Property Name="SiteID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tourists">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AndroidID" Type="nchar" Nullable="false" MaxLength="30" />
+    <Property Name="Username" Type="nchar" MaxLength="30" />
+    <Property Name="VisitedSites" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_SiteComments_NationalSites">
+    <End Role="NationalSites" Type="db5e168c72a59c40f0a71ea27600d99136Model.Store.NationalSites" Multiplicity="1" />
+    <End Role="SiteComments" Type="db5e168c72a59c40f0a71ea27600d99136Model.Store.SiteComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NationalSites">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SiteComments">
+        <PropertyRef Name="SiteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SiteEvents_NationalSites">
+    <End Role="NationalSites" Type="db5e168c72a59c40f0a71ea27600d99136Model.Store.NationalSites" Multiplicity="1" />
+    <End Role="SiteEvents" Type="db5e168c72a59c40f0a71ea27600d99136Model.Store.SiteEvents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NationalSites">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SiteEvents">
+        <PropertyRef Name="SiteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

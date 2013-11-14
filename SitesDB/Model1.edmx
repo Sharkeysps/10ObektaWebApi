@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="db5e168c72a59c40f0a71ea27600d99136Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="db5e168c72a59c40f0a71ea27600d99136ModelStoreContainer">
+          <EntitySet Name="NationalSites" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.Store.NationalSites" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SiteComments" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.Store.SiteComments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SiteEvents" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.Store.SiteEvents" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tourists" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.Store.Tourists" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_SiteComments_NationalSites" Association="db5e168c72a59c40f0a71ea27600d99136Model.Store.FK_SiteComments_NationalSites">
+            <End Role="NationalSites" EntitySet="NationalSites" />
+            <End Role="SiteComments" EntitySet="SiteComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteEvents_NationalSites" Association="db5e168c72a59c40f0a71ea27600d99136Model.Store.FK_SiteEvents_NationalSites">
+            <End Role="NationalSites" EntitySet="NationalSites" />
+            <End Role="SiteEvents" EntitySet="SiteEvents" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="NationalSites">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nchar" Nullable="false" MaxLength="50" />
+          <Property Name="City" Type="nchar" Nullable="false" MaxLength="30" />
+          <Property Name="Number" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SiteComments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Comment" Type="ntext" Nullable="false" />
+          <Property Name="DateAdded" Type="smalldatetime" />
+          <Property Name="SiteID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SiteEvents">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EventDescription" Type="ntext" Nullable="false" />
+          <Property Name="DateOfEvent" Type="smalldatetime" />
+          <Property Name="SiteID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tourists">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AndroidID" Type="nchar" Nullable="false" MaxLength="30" />
+          <Property Name="Username" Type="nchar" MaxLength="30" />
+          <Property Name="VisitedSites" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_SiteComments_NationalSites">
+          <End Role="NationalSites" Type="db5e168c72a59c40f0a71ea27600d99136Model.Store.NationalSites" Multiplicity="1" />
+          <End Role="SiteComments" Type="db5e168c72a59c40f0a71ea27600d99136Model.Store.SiteComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NationalSites">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SiteComments">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteEvents_NationalSites">
+          <End Role="NationalSites" Type="db5e168c72a59c40f0a71ea27600d99136Model.Store.NationalSites" Multiplicity="1" />
+          <End Role="SiteEvents" Type="db5e168c72a59c40f0a71ea27600d99136Model.Store.SiteEvents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NationalSites">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SiteEvents">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db5e168c72a59c40f0a71ea27600d99136Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SitesEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="NationalSites" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.NationalSite" />
+          <EntitySet Name="SiteComments" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.SiteComment" />
+          <EntitySet Name="SiteEvents" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.SiteEvent" />
+          <EntitySet Name="sysdiagrams" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.sysdiagram" />
+          <EntitySet Name="Tourists" EntityType="db5e168c72a59c40f0a71ea27600d99136Model.Tourist" />
+          <AssociationSet Name="FK_SiteComments_NationalSites" Association="db5e168c72a59c40f0a71ea27600d99136Model.FK_SiteComments_NationalSites">
+            <End Role="NationalSites" EntitySet="NationalSites" />
+            <End Role="SiteComments" EntitySet="SiteComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteEvents_NationalSites" Association="db5e168c72a59c40f0a71ea27600d99136Model.FK_SiteEvents_NationalSites">
+            <End Role="NationalSites" EntitySet="NationalSites" />
+            <End Role="SiteEvents" EntitySet="SiteEvents" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="NationalSite">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SiteComments" Relationship="db5e168c72a59c40f0a71ea27600d99136Model.FK_SiteComments_NationalSites" FromRole="NationalSites" ToRole="SiteComments" />
+          <NavigationProperty Name="SiteEvents" Relationship="db5e168c72a59c40f0a71ea27600d99136Model.FK_SiteEvents_NationalSites" FromRole="NationalSites" ToRole="SiteEvents" />
+        </EntityType>
+        <EntityType Name="SiteComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DateAdded" Type="DateTime" Precision="0" />
+          <Property Name="SiteID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NationalSite" Relationship="db5e168c72a59c40f0a71ea27600d99136Model.FK_SiteComments_NationalSites" FromRole="SiteComments" ToRole="NationalSites" />
+        </EntityType>
+        <EntityType Name="SiteEvent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="EventDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DateOfEvent" Type="DateTime" Precision="0" />
+          <Property Name="SiteID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NationalSite" Relationship="db5e168c72a59c40f0a71ea27600d99136Model.FK_SiteEvents_NationalSites" FromRole="SiteEvents" ToRole="NationalSites" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tourist">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AndroidID" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="Username" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="VisitedSites" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_SiteComments_NationalSites">
+          <End Role="NationalSites" Type="db5e168c72a59c40f0a71ea27600d99136Model.NationalSite" Multiplicity="1" />
+          <End Role="SiteComments" Type="db5e168c72a59c40f0a71ea27600d99136Model.SiteComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NationalSites">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SiteComments">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteEvents_NationalSites">
+          <End Role="NationalSites" Type="db5e168c72a59c40f0a71ea27600d99136Model.NationalSite" Multiplicity="1" />
+          <End Role="SiteEvents" Type="db5e168c72a59c40f0a71ea27600d99136Model.SiteEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NationalSites">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SiteEvents">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db5e168c72a59c40f0a71ea27600d99136ModelStoreContainer" CdmEntityContainer="SitesEntities">
+          <EntitySetMapping Name="NationalSites">
+            <EntityTypeMapping TypeName="db5e168c72a59c40f0a71ea27600d99136Model.NationalSite">
+              <MappingFragment StoreEntitySet="NationalSites">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteComments">
+            <EntityTypeMapping TypeName="db5e168c72a59c40f0a71ea27600d99136Model.SiteComment">
+              <MappingFragment StoreEntitySet="SiteComments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteEvents">
+            <EntityTypeMapping TypeName="db5e168c72a59c40f0a71ea27600d99136Model.SiteEvent">
+              <MappingFragment StoreEntitySet="SiteEvents">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+                <ScalarProperty Name="DateOfEvent" ColumnName="DateOfEvent" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="db5e168c72a59c40f0a71ea27600d99136Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tourists">
+            <EntityTypeMapping TypeName="db5e168c72a59c40f0a71ea27600d99136Model.Tourist">
+              <MappingFragment StoreEntitySet="Tourists">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AndroidID" ColumnName="AndroidID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="VisitedSites" ColumnName="VisitedSites" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

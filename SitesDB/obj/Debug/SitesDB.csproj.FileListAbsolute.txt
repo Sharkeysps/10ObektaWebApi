@@ -1,0 +1,10 @@
+C:\Users\student\ObektsApi\ObektiApi\SitesDB\bin\Debug\SitesDB.dll.config
+C:\Users\student\ObektsApi\ObektiApi\SitesDB\bin\Debug\SitesDB.dll
+C:\Users\student\ObektsApi\ObektiApi\SitesDB\bin\Debug\SitesDB.pdb
+C:\Users\student\ObektsApi\ObektiApi\SitesDB\bin\Debug\EntityFramework.dll
+C:\Users\student\ObektsApi\ObektiApi\SitesDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\student\ObektsApi\ObektiApi\SitesDB\bin\Debug\EntityFramework.xml
+C:\Users\student\ObektsApi\ObektiApi\SitesDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\student\ObektsApi\ObektiApi\SitesDB\obj\Debug\SitesDB.csprojResolveAssemblyReference.cache
+C:\Users\student\ObektsApi\ObektiApi\SitesDB\obj\Debug\SitesDB.dll
+C:\Users\student\ObektsApi\ObektiApi\SitesDB\obj\Debug\SitesDB.pdb
