@@ -25,6 +25,14 @@ namespace ObektiApi.Models
                     db.Tourists.Add(addTourist);
                     db.SaveChanges();
                 }
+
+                if (searchedTourist != null)
+                {
+                    var updateTourist = db.Tourists.Find(searchedTourist.ID);
+                    updateTourist.VisitedSites = newTourist.VisitedSites;
+                    db.SaveChanges();
+                    
+                }
             }
         }
 
