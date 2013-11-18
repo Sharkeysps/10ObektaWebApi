@@ -45,7 +45,7 @@ namespace ObektiApi.Models
                                        select t).FirstOrDefault();
                 if (searchedTourist != null)
                 {
-                    var listOfTourists = db.Tourists.OrderBy(v => v.VisitedSites).ToList();
+                    var listOfTourists = db.Tourists.OrderBy(v => v.VisitedSites).ToList().Reverse();
                     int place = listOfTourists.IndexOf(searchedTourist);
                     return place;
                 }
