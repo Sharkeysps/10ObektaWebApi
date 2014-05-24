@@ -10,13 +10,6 @@ namespace ObektiApi.Controllers
 {
     public class EventController : ApiController
     {
-        //// GET api/event
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        // GET api/event/5
         public SiteEventsModel Get(int id)
         {
             var foundEvents = new SiteEventsModel();
@@ -31,14 +24,5 @@ namespace ObektiApi.Controllers
             newEvent.SaveEvent(Event);
         }
 
-        //// PUT api/event/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
-        //// DELETE api/event/5
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

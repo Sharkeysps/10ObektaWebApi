@@ -30,7 +30,7 @@ namespace ObektiApi.Models
                     }
 
                     var commentModel = new CommentModel();
-                    commentModel.Comment = comment.Comment;
+                    commentModel.Comment = comment.Comment.Trim();
                     commentModel.SiteID = comment.SiteID;
                     String username = comment.UserName;
                     if (!String.IsNullOrEmpty(username))
@@ -60,7 +60,7 @@ namespace ObektiApi.Models
                     return;
                 }
                 newComment.UserName = postedComment.UserName;
-                newComment.Comment = postedComment.Comment;
+                newComment.Comment = postedComment.Comment.Trim();
                 newComment.SiteID = postedComment.SiteID;
                 db.SiteComments.Add(newComment);
                 db.SaveChanges();
