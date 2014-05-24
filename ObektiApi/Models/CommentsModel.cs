@@ -27,7 +27,7 @@ namespace ObektiApi.Models
                     var commentModel = new CommentModel();
                     commentModel.Comment = comment.Comment;
                     commentModel.SiteID = comment.SiteID;
-                    commentModel.DateAdded = comment.DateAdded;
+                    commentModel.UserName = comment.UserName;
                     Comments.Add(commentModel);
 
                 }
@@ -39,11 +39,11 @@ namespace ObektiApi.Models
         public void SaveComment(PostCommentModel postedComment)
         {
             using (var db = new SitesEntities())
-            { 
-                SiteComment newComment=new SiteComment();
-                newComment.DateAdded=DateTime.Now;
-                newComment.Comment=postedComment.Comment;
-                newComment.SiteID=postedComment.SiteID;
+            {
+                SiteComment newComment = new SiteComment();
+                newComment.UserName = postedComment.UserName;
+                newComment.Comment = postedComment.Comment;
+                newComment.SiteID = postedComment.SiteID;
                 db.SiteComments.Add(newComment);
                 db.SaveChanges();
             }

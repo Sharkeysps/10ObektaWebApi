@@ -30,7 +30,7 @@
     </Key>
     <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Comment" Type="ntext" Nullable="false" />
-    <Property Name="DateAdded" Type="smalldatetime" />
+    <Property Name="UserName" Type="varchar" MaxLength="30" />
     <Property Name="SiteID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SiteEvents">

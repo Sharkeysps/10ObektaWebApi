@@ -9,5 +9,6 @@ namespace ObektiApi.Models
     {
         public string Comment { get; set; }
         public int SiteID { get; set; }
+        public String UserName { get; set; }
     }
 }

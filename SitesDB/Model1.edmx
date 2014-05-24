@@ -35,7 +35,7 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Comment" Type="ntext" Nullable="false" />
-          <Property Name="DateAdded" Type="smalldatetime" />
+          <Property Name="UserName" Type="varchar" MaxLength="30" />
           <Property Name="SiteID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SiteEvents">
@@ -126,9 +126,9 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="DateAdded" Type="DateTime" Precision="0" />
           <Property Name="SiteID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="NationalSite" Relationship="db5e168c72a59c40f0a71ea27600d99136Model.FK_SiteComments_NationalSites" FromRole="SiteComments" ToRole="NationalSites" />
+          <Property Type="String" Name="UserName" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SiteEvent">
           <Key>
@@ -202,9 +202,9 @@
           <EntitySetMapping Name="SiteComments">
             <EntityTypeMapping TypeName="db5e168c72a59c40f0a71ea27600d99136Model.SiteComment">
               <MappingFragment StoreEntitySet="SiteComments">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
                 <ScalarProperty Name="SiteID" ColumnName="SiteID" />
               </MappingFragment>
             </EntityTypeMapping>

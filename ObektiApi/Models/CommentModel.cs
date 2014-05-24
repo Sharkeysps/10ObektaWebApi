@@ -8,7 +8,7 @@ namespace ObektiApi.Models
     public class CommentModel
     {
         public String Comment { get; set; }
-        public DateTime? DateAdded { get; set; }
+        public String UserName { get; set; }
         public int SiteID { get; set; }
     }
 }

@@ -8,3 +8,13 @@ C:\Users\student\ObektsApi\ObektiApi\SitesDB\bin\Debug\EntityFramework.SqlServer
 C:\Users\student\ObektsApi\ObektiApi\SitesDB\obj\Debug\SitesDB.csprojResolveAssemblyReference.cache
 C:\Users\student\ObektsApi\ObektiApi\SitesDB\obj\Debug\SitesDB.dll
 C:\Users\student\ObektsApi\ObektiApi\SitesDB\obj\Debug\SitesDB.pdb
+C:\Users\Sharkey\Desktop\10ObektaWebApi-master\10ObektaWebApi-master\SitesDB\bin\Debug\SitesDB.dll.config
+C:\Users\Sharkey\Desktop\10ObektaWebApi-master\10ObektaWebApi-master\SitesDB\bin\Debug\SitesDB.dll
+C:\Users\Sharkey\Desktop\10ObektaWebApi-master\10ObektaWebApi-master\SitesDB\bin\Debug\SitesDB.pdb
+C:\Users\Sharkey\Desktop\10ObektaWebApi-master\10ObektaWebApi-master\SitesDB\bin\Debug\EntityFramework.dll
+C:\Users\Sharkey\Desktop\10ObektaWebApi-master\10ObektaWebApi-master\SitesDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Sharkey\Desktop\10ObektaWebApi-master\10ObektaWebApi-master\SitesDB\bin\Debug\EntityFramework.xml
+C:\Users\Sharkey\Desktop\10ObektaWebApi-master\10ObektaWebApi-master\SitesDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Sharkey\Desktop\10ObektaWebApi-master\10ObektaWebApi-master\SitesDB\obj\Debug\SitesDB.csprojResolveAssemblyReference.cache
+C:\Users\Sharkey\Desktop\10ObektaWebApi-master\10ObektaWebApi-master\SitesDB\obj\Debug\SitesDB.dll
+C:\Users\Sharkey\Desktop\10ObektaWebApi-master\10ObektaWebApi-master\SitesDB\obj\Debug\SitesDB.pdb

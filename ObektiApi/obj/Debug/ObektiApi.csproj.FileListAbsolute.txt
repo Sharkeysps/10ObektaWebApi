@@ -32,3 +32,5 @@ C:\Users\student\ObektsApi\ObektiApi\ObektiApi\obj\Debug\ObektiApi.dll
 C:\Users\student\ObektsApi\ObektiApi\ObektiApi\obj\Debug\ObektiApi.pdb
 C:\Users\student\ObektsApi\ObektiApi\ObektiApi\bin\SitesDB.dll
 C:\Users\student\ObektsApi\ObektiApi\ObektiApi\bin\SitesDB.pdb
+C:\Users\Sharkey\Desktop\10ObektaWebApi-master\10ObektaWebApi-master\ObektiApi\obj\Debug\ObektiApi.csprojResolveAssemblyReference.cache
+C:\Users\Sharkey\Desktop\10ObektaWebApi-master\10ObektaWebApi-master\ObektiApi\obj\Debug\ObektiApi.dll

@@ -14,9 +14,9 @@
     <EntitySetMapping Name="SiteComments">
       <EntityTypeMapping TypeName="db5e168c72a59c40f0a71ea27600d99136Model.SiteComment">
         <MappingFragment StoreEntitySet="SiteComments">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Comment" ColumnName="Comment" />
-          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
           <ScalarProperty Name="SiteID" ColumnName="SiteID" />
         </MappingFragment>
       </EntityTypeMapping>
