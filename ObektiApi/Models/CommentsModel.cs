@@ -27,7 +27,15 @@ namespace ObektiApi.Models
                     var commentModel = new CommentModel();
                     commentModel.Comment = comment.Comment;
                     commentModel.SiteID = comment.SiteID;
-                    commentModel.UserName = comment.UserName;
+                    if (!comment.UserName.Equals(null))
+                    {
+                        commentModel.UserName = comment.UserName;
+                    }
+                    else
+                    {
+                        commentModel.UserName = "Анонимен";
+                    }
+                    
                     Comments.Add(commentModel);
 
                 }
