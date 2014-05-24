@@ -24,10 +24,16 @@ namespace ObektiApi.Models
 
                 foreach (var comment in comments)
                 {
+                    if (String.IsNullOrEmpty(comment.Comment))
+                    {
+                        continue;
+                    }
+
                     var commentModel = new CommentModel();
                     commentModel.Comment = comment.Comment;
                     commentModel.SiteID = comment.SiteID;
-                    if (!comment.UserName.Equals(null))
+                    String username = comment.UserName;
+                    if (!String.IsNullOrEmpty(username))
                     {
                         commentModel.UserName = comment.UserName;
                     }
@@ -49,6 +55,10 @@ namespace ObektiApi.Models
             using (var db = new SitesEntities())
             {
                 SiteComment newComment = new SiteComment();
+                if (String.IsNullOrEmpty(postedComment.Comment))
+                {
+                    return;
+                }
                 newComment.UserName = postedComment.UserName;
                 newComment.Comment = postedComment.Comment;
                 newComment.SiteID = postedComment.SiteID;
