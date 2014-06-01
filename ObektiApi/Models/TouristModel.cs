@@ -30,10 +30,27 @@ namespace ObektiApi.Models
                 {
                     var updateTourist = db.Tourists.Find(searchedTourist.ID);
                     updateTourist.VisitedSites = newTourist.VisitedSites;
+                    updateTourist.Username = newTourist.Username;
                     db.SaveChanges();
                     
                 }
             }
+        }
+
+        public bool CheckIfUsernameExists(string userName)
+        {
+            using (var db = new SitesEntities())
+            {
+                var usernameExists = (from t in db.Tourists
+                                       where t.Username.Equals(userName) == true
+                                       select t).FirstOrDefault();
+                if (usernameExists != null)
+                {
+                    return true;
+                }
+
+            }
+            return false;
         }
 
         public int ReturnTouristPlace(string androidId)

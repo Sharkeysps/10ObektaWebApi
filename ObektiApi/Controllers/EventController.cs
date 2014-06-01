@@ -10,6 +10,7 @@ namespace ObektiApi.Controllers
 {
     public class EventController : ApiController
     {
+        // GET api/event/5
         public SiteEventsModel Get(int id)
         {
             var foundEvents = new SiteEventsModel();

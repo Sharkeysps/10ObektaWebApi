@@ -9,7 +9,10 @@ namespace ObektiApi.Controllers
 {
     public class TouristController : ApiController
     {
+
         // GET api/tourist/?androidId
+        [HttpGet]
+        [ActionName("GetProgress")]
         public int Get(string androidId)
         {
             var model = new TouristModel();
@@ -17,12 +20,22 @@ namespace ObektiApi.Controllers
             return place;
         }
 
+        [HttpGet]
+        [ActionName("CheckUsername")]
+        public bool checkUsername(string userName)
+        {
+            var model = new TouristModel();
+            var usernameExists = model.CheckIfUsernameExists(userName);
+            return usernameExists;
+        }
+
+
+
         // POST api/tourist
         public void Post([FromBody]NewTouristModel newTourist)
         {
             var model = new TouristModel();
             model.SaveTourist(newTourist);
         }
-
     }
 }
