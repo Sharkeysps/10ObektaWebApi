@@ -45,6 +45,7 @@
     <EntitySetMapping Name="Tourists">
       <EntityTypeMapping TypeName="db5e168c72a59c40f0a71ea27600d99136Model.Tourist">
         <MappingFragment StoreEntitySet="Tourists">
+          <ScalarProperty Name="MessageToUser" ColumnName="MessageToUser" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="AndroidID" ColumnName="AndroidID" />
           <ScalarProperty Name="Username" ColumnName="Username" />

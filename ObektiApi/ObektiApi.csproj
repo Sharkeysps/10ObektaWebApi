@@ -126,7 +126,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CommentController.cs" />
-    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TouristController.cs" />
     <Compile Include="Global.asax.cs">
@@ -138,7 +137,7 @@
     <Compile Include="Models\PostCommentModel.cs" />
     <Compile Include="Models\CommentsModel.cs" />
     <Compile Include="Models\PostedEventModel.cs" />
-    <Compile Include="Models\SiteEventsModel.cs" />
+    <Compile Include="Models\ProgressAndMessageModel.cs" />
     <Compile Include="Models\TouristModel.cs" />
     <Compile Include="Models\TouristsSearchPlaceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

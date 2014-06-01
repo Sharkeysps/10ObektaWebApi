@@ -13,11 +13,11 @@ namespace ObektiApi.Controllers
         // GET api/tourist/?androidId
         [HttpGet]
         [ActionName("GetProgress")]
-        public int Get(string androidId)
+        public ProgressAndMessageModel Get(string androidId)
         {
             var model = new TouristModel();
-            var place = model.ReturnTouristPlace(androidId);
-            return place;
+            var progress = model.ReturnTouristPlace(androidId);
+            return progress;
         }
 
         [HttpGet]

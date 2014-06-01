@@ -26,6 +26,8 @@ public partial class Tourist
 
     public int VisitedSites { get; set; }
 
+    public string MessageToUser { get; set; }
+
 }
 
 }

@@ -60,6 +60,7 @@
     <Property Name="AndroidID" Type="nchar" Nullable="false" MaxLength="30" />
     <Property Name="Username" Type="nchar" MaxLength="30" />
     <Property Name="VisitedSites" Type="int" Nullable="false" />
+    <Property Name="MessageToUser" Type="varchar" MaxLength="100" />
   </EntityType>
   <Association Name="FK_SiteComments_NationalSites">
     <End Role="NationalSites" Type="db5e168c72a59c40f0a71ea27600d99136Model.Store.NationalSites" Multiplicity="1" />

@@ -53,23 +53,31 @@ namespace ObektiApi.Models
             return false;
         }
 
-        public int ReturnTouristPlace(string androidId)
+        public ProgressAndMessageModel ReturnTouristPlace(string androidId)
         {
+            ProgressAndMessageModel progress = new ProgressAndMessageModel();
+
             using (var db = new SitesEntities())
             {
-                var searchedTourist=(from t in db.Tourists
-                                       where t.AndroidID.Equals(androidId) == true
-                                       select t).FirstOrDefault();
+
+                var searchedTourist=(from tourist in db.Tourists
+                                       where tourist.AndroidID.Equals(androidId) == true
+                                       select tourist).FirstOrDefault();
                 if (searchedTourist != null)
                 {
                     var listOfTourists = db.Tourists.OrderBy(v => v.VisitedSites).ToList();
                     listOfTourists.Reverse();
                     int place = listOfTourists.IndexOf(searchedTourist);
-                    return place;
+                    progress.ProgressNumber = place;
+                    if(!String.IsNullOrWhiteSpace(searchedTourist.MessageToUser))
+                    {
+                    progress.Message = searchedTourist.MessageToUser;
+                    }
+                    return progress;
                 }
 
             }
-            return -1;
+            return progress;
         }
     }
 }

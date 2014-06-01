@@ -65,6 +65,7 @@
           <Property Name="AndroidID" Type="nchar" Nullable="false" MaxLength="30" />
           <Property Name="Username" Type="nchar" MaxLength="30" />
           <Property Name="VisitedSites" Type="int" Nullable="false" />
+          <Property Name="MessageToUser" Type="varchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK_SiteComments_NationalSites">
           <End Role="NationalSites" Type="db5e168c72a59c40f0a71ea27600d99136Model.Store.NationalSites" Multiplicity="1" />
@@ -158,6 +159,7 @@
           <Property Name="AndroidID" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
           <Property Name="Username" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
           <Property Name="VisitedSites" Type="Int32" Nullable="false" />
+          <Property Type="String" Name="MessageToUser" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_SiteComments_NationalSites">
           <End Role="NationalSites" Type="db5e168c72a59c40f0a71ea27600d99136Model.NationalSite" Multiplicity="1" />
@@ -233,6 +235,7 @@
           <EntitySetMapping Name="Tourists">
             <EntityTypeMapping TypeName="db5e168c72a59c40f0a71ea27600d99136Model.Tourist">
               <MappingFragment StoreEntitySet="Tourists">
+                <ScalarProperty Name="MessageToUser" ColumnName="MessageToUser" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="AndroidID" ColumnName="AndroidID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
